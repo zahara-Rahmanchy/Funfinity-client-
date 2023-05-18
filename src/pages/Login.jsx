@@ -1,14 +1,41 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../providers/AuthProvider";
+import {FcGoogle} from "react-icons/fc";
 const Login = () => {
-  const {logIn} = useContext(AuthContext);
+  const {logIn, googleLogIn} = useContext(AuthContext);
+  const [error, setError] = useState();
   const handleLogin = e => {
+    setError("");
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+
+    logIn(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        alert("logged in");
+      })
+      .catch(error => setError(error.message));
+
     form.reset();
+  };
+
+  //   google
+  const handleGoogle = () => {
+    googleLogIn()
+      .then(result => {
+        const loggedInUser = result.user;
+
+        console.log(loggedInUser);
+
+        // navigate(fromCurrentLocation, {replace: true});
+      })
+      .catch(error => {
+        setError(error.message);
+      });
   };
 
   return (
@@ -58,6 +85,7 @@ const Login = () => {
                   </Link>{" "}
                 </p>
               </div>
+              {error && <p className="text-sm text-red-600">{error}</p>}
               <div className="form-control mt-6">
                 <button
                   className="btn border-0 bg-gradient-to-r  from-teal-300 via-base-600 to-teal-500 "
@@ -68,6 +96,15 @@ const Login = () => {
               </div>
             </div>
           </form>
+          <div className="divider text-center">OR</div>
+          <div className=" place-items-center grid mb-5">
+            <button
+              className="btn  text-center bg-transparent hover:bg-blue-300 place-items-center text-teal-700"
+              onClick={handleGoogle}
+            >
+              <FcGoogle /> oogle
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ const AuthProvider = ({children}) => {
 
   //   google sign in
   const googleLogIn = () => {
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, googleProvider);
   };
 
   const authInfo = {
