@@ -1,8 +1,10 @@
-import React, {useContext} from "react";
-import {Link} from "react-router-dom";
+import React, {useContext, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../providers/AuthProvider";
 const SignUp = () => {
-  const {createUser} = useContext(AuthContext);
+  const {createUser, update, logOut} = useContext(AuthContext);
+  const [error, setError] = useState();
+  const navigate = useNavigate();
   const handleSignUp = event => {
     event.preventDefault();
 
@@ -10,17 +12,23 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const url = event.target.url.value;
-    console.log(name, email, password, url);
+    // console.log(name, email, password, url);
 
     createUser(email, password)
       .then(result => {
         const user = result.user;
-        console.log("created user", user);
+        // console.log("created user", user);
+        update(user, name, url);
+
+        logOut()
+          .then(() => alert("Registered Successfully. Please Login!"))
+          .catch(error => setError(error.message));
+        navigate("/login", {replace: true});
         // use toast
-        alert("sign up successful");
+
         form.reset();
       })
-      .catch(error => console.log(error));
+      .catch(error => setError(error.message));
   };
 
   return (
@@ -97,6 +105,7 @@ const SignUp = () => {
                   </Link>{" "}
                 </p>
               </div>
+              {error && <p className="text-sm text-red-600">{error}</p>}
               <div className="form-control mt-6">
                 <button
                   type="submit"

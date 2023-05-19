@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../providers/AuthProvider";
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => alert("logged out!"))
+      .catch(error => error.message);
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -25,6 +34,18 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
+            {user && (
+              <div
+                className="tooltip "
+                data-tip={user.displayName ? user.displayName : ""}
+              >
+                <div className="avatar float-left ms-3 mt-2">
+                  <div className=" w-8 rounded-full">
+                    <img src={user.photoURL} />
+                  </div>
+                </div>
+              </div>
+            )}
             <li>
               <a>Item 1</a>
             </li>
@@ -53,6 +74,31 @@ const Navbar = () => {
             <li>
               <a>Item 3</a>
             </li>
+            <div className=" space-y-3 flex flex-col ms-4 mt-2">
+              {user ? (
+                <button
+                  onClick={handleLogOut}
+                  className="text-center bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 w-1/2 text-white rounded-md py-[0.5px] font-semibold hover:rounded-3xl"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="text-center bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 w-1/2 text-white rounded-md py-[0.5px] font-semibold hover:rounded-3xl"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="text-center bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 w-1/2 text-white rounded-md py-[0.5px] font-semibold hover:rounded-3xl"
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
           </ul>
         </div>
         <div className="flex items-center">
@@ -65,10 +111,10 @@ const Navbar = () => {
           </p>
         </div>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <a>Item new</a>
           </li>
           <li tabIndex={0}>
             <a>
@@ -97,19 +143,44 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end space-x-8">
-        <Link
-          to="/login"
-          className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-4 py-2 text-white text-lg rounded-lg font-semibold"
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-4 py-2 text-white text-lg rounded-lg font-semibold"
-        >
-          Sign Up
-        </Link>
+      <div className="md:navbar-end space-x-4 hidden md:flex">
+        {user ? (
+          <>
+            {/* hover over the img to see the name */}
+            <div
+              className="tooltip"
+              data-tip={user.displayName ? user.displayName : ""}
+            >
+              <div className="avatar">
+                <div className=" w-8 rounded-full">
+                  <img src={user.photoURL} />
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleLogOut}
+              className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-5 py-1 text-white text-sm rounded-lg font-semibold hover:rounded-3xl"
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            {" "}
+            <Link
+              to="/login"
+              className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-5 py-1 text-white text-lg rounded-lg font-semibold hover:rounded-3xl"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-5 py-1 text-white text-lg rounded-lg font-semibold hover:rounded-3xl"
+            >
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
