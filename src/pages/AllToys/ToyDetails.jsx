@@ -2,7 +2,7 @@ import React from "react";
 import {useLoaderData} from "react-router-dom";
 import {AiTwotoneMail} from "react-icons/ai";
 import {FaUserCircle} from "react-icons/fa";
-import {Rating} from "@smastrom/react-rating";
+// import {Rating} from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
 const ToyDetails = () => {

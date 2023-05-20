@@ -58,14 +58,24 @@ const Navbar = () => {
                   All Toys
                 </Link>
               </li>
+              {user && (
+                <>
+                  {" "}
+                  <li>
+                    <Link to="/mytoys" className=" text-lg">
+                      My Toys
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/addtoys" className=" text-lg">
+                      Add Toy
+                    </Link>
+                  </li>
+                </>
+              )}
               <li>
-                <Link to="/mytoys" className=" text-lg">
-                  My Toys
-                </Link>
-              </li>
-              <li>
-                <Link to="/addtoys" className=" text-lg">
-                  Add Toy
+                <Link to="/blog" className=" text-lg">
+                  Blog
                 </Link>
               </li>
               <div className=" space-y-3 flex flex-col ms-4 mt-2">
@@ -117,14 +127,24 @@ const Navbar = () => {
                 All Toys
               </Link>
             </li>
+            {user && (
+              <>
+                {" "}
+                <li>
+                  <Link to="/mytoys" className=" text-lg">
+                    My Toys
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/addtoys" className=" text-lg">
+                    Add Toy
+                  </Link>
+                </li>
+              </>
+            )}
             <li>
-              <Link to="/mytoys" className=" text-lg">
-                My Toys
-              </Link>
-            </li>
-            <li>
-              <Link to="/addtoys" className=" text-lg">
-                Add Toy
+              <Link to="/blog" className=" text-lg">
+                Blog
               </Link>
             </li>
           </ul>

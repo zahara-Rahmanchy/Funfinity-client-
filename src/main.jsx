@@ -12,12 +12,14 @@ import MyToys from "./pages/MyToys/MyToys.jsx";
 import AddAToy from "./pages/AddAToy/AddAToy.jsx";
 import ToyDetails from "./pages/AllToys/ToyDetails.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
+import Blog from "./pages/Blog.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -48,11 +50,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/mytoys",
-        element: <MyToys />,
+        element: (
+          <PrivateRoute>
+            <MyToys />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addtoys",
-        element: <AddAToy />,
+        element: (
+          <PrivateRoute>
+            <AddAToy />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },

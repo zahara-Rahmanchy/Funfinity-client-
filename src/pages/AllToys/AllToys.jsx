@@ -19,16 +19,8 @@ const AllToys = () => {
       });
   }, [type]);
 
-  const handleDetails = () => {
-    if (!user) {
-      toast("hgvjhghj");
-      <Navigate to="/login" replace></Navigate>;
-    }
-    // <Link to={`/toy/${t._id}`}></Link>;
-  };
-
   return (
-    <div className="grid grid-cols-4 gap-5 mt-5 mx-8">
+    <div className="grid grid-cols-4 gap-5 mt-5 mx-16 ">
       <div className="w-full md:col-span-1 col-span-4">
         <div className="form-control ">
           <div className="input-group">
@@ -113,14 +105,25 @@ const AllToys = () => {
                   <td className="text-center"> {t.AvailableQuantity}</td>
 
                   <th className="text-center">
-                    <Link to={`/toy/${t._id}`}>
-                      <button
-                        className="btn btn-primary btn-xs"
-                        //   onClick={() => handleDetails()}
-                      >
-                        Details
-                      </button>
-                    </Link>
+                    {user ? (
+                      <Link to={`/toy/${t._id}`}>
+                        <button
+                          className="btn btn-primary btn-xs"
+                          //   onClick={() => handleDetails()}
+                        >
+                          Details
+                        </button>
+                      </Link>
+                    ) : (
+                      <Link to={`/toy/${t._id}`}>
+                        <button
+                          className="btn btn-primary btn-xs"
+                          //   onClick={() => handleDetails(toast(hej))}
+                        >
+                          Details
+                        </button>
+                      </Link>
+                    )}
                   </th>
                 </tr>
               ))}
