@@ -3,7 +3,7 @@ import React from "react";
 const Gallery = () => {
   return (
     <>
-      <div className="max-w-6xl mx-auto  bg-purple-400 px-6 py-3 mt-16 shadow-xl shadow-slate-500 border-slate-200 border-4">
+      <div className="max-w-6xl md:mx-auto mx-4  bg-purple-400 px-6 py-3 mt-16 shadow-xl shadow-slate-500 border-slate-200 border-4">
         <div className=" w-full grid grid-cols-3 my-6 gap-5">
           <img src="https://images.unsplash.com/photo-1616574808693-9fce87de38a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1933&q=80" />
 

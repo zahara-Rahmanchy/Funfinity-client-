@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from "react";
-// import {useLoaderData} from "react-router-dom";
-// import LeftBar from "./LeftBar";
+import React, {useContext, useEffect, useState} from "react";
+import {Link, Navigate} from "react-router-dom";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {AuthContext} from "../../providers/AuthProvider";
 
 const AllToys = () => {
+  const {user} = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("ascen");
@@ -15,11 +18,19 @@ const AllToys = () => {
         setData(data);
       });
   }, [type]);
-  console.log(type);
+
+  const handleDetails = () => {
+    if (!user) {
+      toast("hgvjhghj");
+      <Navigate to="/login" replace></Navigate>;
+    }
+    // <Link to={`/toy/${t._id}`}></Link>;
+  };
+
   return (
     <div className="grid grid-cols-4 gap-5 mt-5 mx-8">
-      <div>
-        <div className="form-control">
+      <div className="w-full md:col-span-1 col-span-4">
+        <div className="form-control ">
           <div className="input-group">
             <input
               type="text"
@@ -28,7 +39,7 @@ const AllToys = () => {
               onChange={e => setSearch(e.target.value)}
             />
 
-            <div className=" bg-blue-800 text-white p-3">
+            <div className="btn bg-blue-800 text-white p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -46,7 +57,7 @@ const AllToys = () => {
             </div>
           </div>
         </div>
-        <ul className="menu bg-sky-50 mt-2  w-4/5 p-2 rounded-lg">
+        <ul className="menu bg-sky-50 mt-2  p-2 rounded-lg w-full">
           <h5 className="text-2xl font-bold my-3 text-purple-500">Sort By </h5>
           <button
             className="btn btn-outline btn-error border-purple-600 border-3 my-2"
@@ -98,11 +109,18 @@ const AllToys = () => {
                   </td>
                   <td>{t.Name}</td>
                   <td>{t.subCategory}</td>
-                  <td>{t.Price}</td>
+                  <td>$ {t.Price}</td>
                   <td className="text-center"> {t.AvailableQuantity}</td>
 
                   <th className="text-center">
-                    <button className="btn btn-primary btn-xs">details</button>
+                    <Link to={`/toy/${t._id}`}>
+                      <button
+                        className="btn btn-primary btn-xs"
+                        //   onClick={() => handleDetails()}
+                      >
+                        Details
+                      </button>
+                    </Link>
                   </th>
                 </tr>
               ))}

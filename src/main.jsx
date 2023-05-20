@@ -10,6 +10,8 @@ import AuthProvider from "./providers/AuthProvider.jsx";
 import AllToys from "./pages/AllToys/AllToys.jsx";
 import MyToys from "./pages/MyToys/MyToys.jsx";
 import AddAToy from "./pages/AddAToy/AddAToy.jsx";
+import ToyDetails from "./pages/AllToys/ToyDetails.jsx";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,16 @@ const router = createBrowserRouter([
         path: "/alltoys",
         element: <AllToys />,
         // loader: () => fetch("https://funfinity-toys-server.vercel.app/toys"),
+      },
+      {
+        path: "/toy/:id",
+        element: (
+          <PrivateRoute>
+            <ToyDetails />
+          </PrivateRoute>
+        ),
+        loader: ({params}) =>
+          fetch(`https://funfinity-toys-server.vercel.app/toy/${params.id}`),
       },
       {
         path: "/mytoys",
