@@ -112,7 +112,7 @@ const Login = () => {
                 className="btn font-bold text-center bg-transparent hover:bg-blue-300 place-items-center text-teal-700"
                 onClick={handleGoogle}
               >
-                <FcGoogle /> oogle
+                <FcGoogle className="text-2xl" /> oogle
               </button>
             </div>
           </div>
