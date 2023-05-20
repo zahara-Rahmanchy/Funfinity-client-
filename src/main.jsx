@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys />,
-        loader: () => fetch("https://funfinity-toys-server.vercel.app/toys"),
+        // loader: () => fetch("https://funfinity-toys-server.vercel.app/toys"),
       },
       {
         path: "/mytoys",
