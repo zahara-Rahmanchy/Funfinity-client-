@@ -48,12 +48,25 @@ const Navbar = () => {
                   </div>
                 </div>
               )}
-              <li>
-                <a>Item 1</a>
+              <li className="hover:bg-none  ">
+                <Link to="/" className=" text-lg">
+                  Home
+                </Link>
               </li>
-              <li tabIndex={0}></li>
+              <li tabIndex={0}>
+                <Link to="/alltoys" className=" text-lg">
+                  All Toys
+                </Link>
+              </li>
               <li>
-                <a>Item 3</a>
+                <Link to="/mytoys" className=" text-lg">
+                  My Toys
+                </Link>
+              </li>
+              <li>
+                <Link to="/addtoys" className=" text-lg">
+                  Add Toy
+                </Link>
               </li>
               <div className=" space-y-3 flex flex-col ms-4 mt-2">
                 {user ? (
@@ -94,7 +107,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-normal menu-horizontal px-1 space-x-5 font-semibold hover: bg-transparent">
-            <li className="hover:bg-none text-5xl ">
+            <li className="hover:bg-none  ">
               <Link to="/" className=" text-lg">
                 Home
               </Link>
@@ -107,6 +120,11 @@ const Navbar = () => {
             <li>
               <Link to="/mytoys" className=" text-lg">
                 My Toys
+              </Link>
+            </li>
+            <li>
+              <Link to="/addtoys" className=" text-lg">
+                Add Toy
               </Link>
             </li>
           </ul>

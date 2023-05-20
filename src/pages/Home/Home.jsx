@@ -5,9 +5,9 @@ import Slider from "./Slider";
 
 const Home = () => {
   return (
-    <div className=" ">
+    <div className="">
       <Slider />
-      <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-24">
+      <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Our Gallery
       </h1>
       <Gallery />
