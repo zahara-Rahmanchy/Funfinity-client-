@@ -7,7 +7,7 @@ import {AuthContext} from "../../providers/AuthProvider";
 
 const AllToys = () => {
   const {user} = useContext(AuthContext);
-  const [state, setState] = useState(false);
+
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("ascen");

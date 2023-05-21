@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Gallery from "./Gallery";
 import Slider from "./Slider";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
@@ -6,14 +6,15 @@ import "react-tabs/style/react-tabs.css";
 import AboutUs from "./AboutUs";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 // import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
-{
-  /* <img src="https://img.freepik.com/free-psd/banner-template-kids-toys-online-shopping_23-2148772318.jpg?w=1060&t=st=1684506024~exp=1684506624~hmac=283fece9bbeb4ae4e6960062c6a59b046c800f5071ec7f3f5b79907b9c455e2a"></img>; */
-}
+import Swal from "sweetalert2";
+import {AuthContext} from "../../providers/AuthProvider";
 
 const Home = () => {
+  const {user} = useContext(AuthContext);
+
   useEffect(() => {
     document.title = `Funfinity`;
 
@@ -39,7 +40,13 @@ const Home = () => {
       .then(res => res.json())
       .then(data => setToys(data));
   }, [currentCat]);
-
+  const navigate = useNavigate();
+  const handledetails = id => {
+    if (!user) {
+      Swal.fire("You need login to view details");
+    }
+    navigate(`/toy/${id}`);
+  };
   return (
     <div className="">
       <div data-aos="fade-right">
@@ -82,9 +89,12 @@ const Home = () => {
                   <p>Rating: {t.Rating} stars</p>
                 </div>
                 <div className="card-actions justify-end">
-                  <Link to={`/toy/${t._id}`}>
-                    <button className="btn btn-primary">View Details</button>
-                  </Link>
+                  <button
+                    className="btn btn-primary btn-xs"
+                    onClick={() => handledetails(t._id)}
+                  >
+                    Details
+                  </button>
                 </div>
               </div>
             </div>

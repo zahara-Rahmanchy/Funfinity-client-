@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 import {AuthContext} from "../providers/AuthProvider";
 const SignUp = () => {
   useEffect(() => {
@@ -24,7 +25,7 @@ const SignUp = () => {
         update(user, name, url);
 
         logOut()
-          .then(() => alert("Registered Successfully. Please Login!"))
+          .then(() => Swal.fire("Registered Successfully. Please Login!"))
           .catch(error => setError(error.message));
         navigate("/login", {replace: true});
         // use toast

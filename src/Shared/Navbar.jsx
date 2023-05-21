@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
 import {AuthContext} from "../providers/AuthProvider";
 // bg-gradient-to-r from-[#9363B5] via-base-600  to-[#9363B5] text-white font-serif"
 const Navbar = () => {
@@ -7,7 +8,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => alert("logged out!"))
+      .then(() => Swal.fire("Logged Out!"))
       .catch(error => error.message);
   };
 

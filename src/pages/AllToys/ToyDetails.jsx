@@ -8,12 +8,12 @@ import {FaUserCircle} from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 const ToyDetails = () => {
   const location = useLocation();
-  console.log(location);
+
   useEffect(() => {
     document.title = `Funfinity|Toy Details`;
   }, []);
   const toy = useLoaderData();
-  console.log(toy);
+
   const {
     picture,
     Name,
