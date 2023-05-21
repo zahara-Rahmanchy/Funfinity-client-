@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import {AuthContext} from "../../providers/AuthProvider";
-
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AddAToy = () => {
   const {user} = useContext(AuthContext);
   const handleAddToy = event => {
@@ -41,13 +42,15 @@ const AddAToy = () => {
       .then(data => {
         // console.log(data);
         if (data.insertedId) {
-          alert("Toy Added successfully");
+          toast("Toy Game Added Successfully!");
+
           form.reset();
         }
       });
   };
   return (
     <div className="max-w-6xl mx-auto bg-blue-200 shadow-xl rounded ">
+      <ToastContainer />
       <div className="grid grid-cols-3 place-content-center">
         <div className="md:col-span-1 bg-purple-500">
           <h1 className="text-4xl font-bold italic text-center my-10 text-white">
