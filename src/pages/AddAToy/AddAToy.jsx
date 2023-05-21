@@ -1,9 +1,10 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../providers/AuthProvider";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const AddAToy = () => {
   const {user} = useContext(AuthContext);
+
   const handleAddToy = event => {
     event.preventDefault();
     const form = event.target;

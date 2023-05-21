@@ -37,7 +37,6 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys />,
-        // loader: () => fetch("https://funfinity-toys-server.vercel.app/toys"),
       },
       {
         path: "/toy/:id",
@@ -76,7 +75,6 @@ const router = createBrowserRouter([
             <UpdateToy />
           </PrivateRoute>
         ),
-        // loader: {params},
       },
     ],
   },

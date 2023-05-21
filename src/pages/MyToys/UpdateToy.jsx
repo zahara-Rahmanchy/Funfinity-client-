@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 const UpdateToy = () => {
   const {id} = useParams();
+  const [initial, setInitial] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://funfinity-toys-server.vercel.app/toy/${id}`)
+      .then(res => res.json())
+      .then(data => setInitial(data));
+  }, []);
+
+  //   console.log(initial.Description);
+  const {Price, Description, AvailableQuantity, Name} = initial;
 
   const handleConfirm = e => {
     e.preventDefault();
@@ -15,8 +25,8 @@ const UpdateToy = () => {
       AvailableQuantity: quan,
       Description: Description,
     };
-    console.log(toy);
-    fetch(`http://localhost:5000/updatetoys/${id}`, {
+
+    fetch(`https://funfinity-toys-server.vercel.app/updatetoys/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -32,48 +42,64 @@ const UpdateToy = () => {
       });
   };
   return (
-    <div className="max-w-4xl mx-auto bg-purple-500 my-20 rounded-lg p-5 grid ">
-      <h1 className="text-3xl text-white font-bold text-center p-3">Update</h1>
-      <form onSubmit={handleConfirm} id="form">
-        <div className="flex">
-          <div className="form-control w-full mt-2">
+    <>
+      <h1 className="text-5xl text-blue-500  italic font-bold text-center p-3">
+        Update
+      </h1>
+      <div className="max-w-4xl mx-auto bg-blue-400  my-10 rounded-lg p-5 grid ">
+        <form onSubmit={handleConfirm} id="form">
+          <h1 className="text-3xl text-white font-bold text-center p-3">
+            {Name}
+          </h1>
+          <div className="flex">
+            <div className="form-control w-full mt-2">
+              <label className="input-group ">
+                <span className="font-semibold px-2text-lg">Price</span>
+                <input
+                  type="number"
+                  defaultValue={Price}
+                  className="input input-bordered  bg-slate-100"
+                  name="price"
+                />
+              </label>
+            </div>
+
+            <div className="form-control text-center">
+              <label className="input-group mt-2">
+                <span className="font-semibold px-2">Available Quantity</span>
+                <input
+                  type="number"
+                  defaultValue={AvailableQuantity}
+                  className="input input-bordered  bg-slate-100 "
+                  name="quant"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div className="form-control mt-3">
+            <label className="label">
+              <span className="label-text text-white text-xl font-semibold">
+                Description
+              </span>
+            </label>
             <label className="input-group">
-              <span>Price</span>
               <input
-                type="number"
-                defaultValue={"kj"}
-                className="input input-bordered "
-                name="price"
+                type="text"
+                defaultValue={Description}
+                placeholder="Description"
+                name="Description"
+                className="input  w-full h-36 rounded-md bg-slate-100"
               />
             </label>
           </div>
 
-          <div className="form-control text-center">
-            <label className="input-group mt-2">
-              <span>Available Quantity</span>
-              <input
-                type="number"
-                defaultValue="jh"
-                className="input input-bordered "
-                name="quant"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="form-control mt-3">
-          <label className="input-group">
-            <input
-              type="text"
-              placeholder="Description"
-              name="Description"
-              className="input input-bordered  w-full h-40"
-            />
-          </label>
-        </div>
-        <button className="btn btn-outline bg-white w-1/2 mt-5 ">Update</button>
-      </form>
-    </div>
+          <button className="btn btn- bg-purple-700 border-none w-1/2 mt-5 ">
+            Update
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
