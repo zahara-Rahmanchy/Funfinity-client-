@@ -24,4 +24,4 @@
 
 # Live site link
 
-`(https://funfinity-toys.web.app/)`
+<https://funfinity-toys.web.app/>
