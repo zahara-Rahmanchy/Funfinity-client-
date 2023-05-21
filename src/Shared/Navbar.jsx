@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="">
+    <div className="border-3 border-cyan-600">
       <div className="navbar relative ">
         <div className="navbar-start ">
           <div className="dropdown">
