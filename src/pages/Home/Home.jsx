@@ -65,10 +65,10 @@ const Home = () => {
       </h1>
 
       <div className="my-20 max-w-5xl mx-auto" data-aos="fade-flip">
-        <div className="tabs tabs-boxed bg-sky-300 mb-4 text-black grid md:grid-cols-4 grid-col-2 md:space-x-4 justify-between md:space-y-2  md:p-4 space-y-4 mx-auto">
+        <div className="tabs tabs-boxed bg-sky-300 mb-4 text-black md:grid md:grid-cols-4  md:space-x-4 justify-between md:space-y-2  md:p-4 space-y-4 mx-auto">
           {uniqueCat.map((c, index) => (
             <button
-              className="tab text-white font-semibold hover:tab-active btn border-s-0 border-b-0 border-t-0  btn-error"
+              className="tab text-white font-semibold hover:tab-active btn border-s-0 border-b-0 border-t-0  btn-error w-full"
               onClick={() => handleTab(c)}
               key={index}
             >
