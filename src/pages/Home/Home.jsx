@@ -4,7 +4,8 @@ import Slider from "./Slider";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import AboutUs from "./AboutUs";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 // import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
 {
@@ -16,6 +17,7 @@ const Home = () => {
   const [currentCat, setCurrentCat] = useState("Architecture Puzzles");
   const [toys, setToys] = useState([]);
   useEffect(() => {
+    Aos.init();
     fetch(`https://funfinity-toys-server.vercel.app/toys`)
       .then(res => res.json())
       .then(data => setcat(data));
@@ -35,18 +37,18 @@ const Home = () => {
 
   return (
     <div className="">
-      <Slider />
+      <Slider data-aos="fade-right" />
       <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Our Gallery
       </h1>
-      <Gallery />
+      <Gallery data-aos="fade-up" />
 
       {/* tabs */}
       <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Shop By Catagory
       </h1>
 
-      <div className="my-20 max-w-5xl mx-auto">
+      <div className="my-20 max-w-5xl mx-auto" data-aos="fade-flip">
         <div className="tabs tabs-boxed bg-sky-300 mb-4 text-black grid md:grid-cols-4 grid-col-2 md:space-x-4 justify-between md:space-y-2  md:p-4 space-y-4 mx-auto">
           {uniqueCat.map((c, index) => (
             <button
@@ -77,7 +79,10 @@ const Home = () => {
         </div>
       </div>
       {/* first extra section */}
-      <div className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5">
+      <div
+        className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5"
+        data-aos="fade-zoom-in"
+      >
         <Marquee speed={400} pauseOnHover={true}>
           <p className="text-3xl font-bold px-3 text-blue-500">
             Unbeatable prices on board games and puzzles - starting from just
@@ -112,7 +117,7 @@ const Home = () => {
         </Marquee>
       </div>
       {/* second extra section */}
-      <AboutUs />
+      <AboutUs data-aos="flip-left" />
     </div>
   );
 };
