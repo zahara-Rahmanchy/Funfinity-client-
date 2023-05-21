@@ -2,13 +2,15 @@ import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-import UpdateToy from "./UpdateToy";
+import {FaTrash, FaEdit} from "react-icons/fa";
 const MyToys = () => {
   const {user} = useContext(AuthContext);
 
   const url = `https://funfinity-toys-server.vercel.app/mytoys?email=${user.email}`;
   const [data, setData] = useState([]);
   useEffect(() => {
+    document.title = `Funfinity|My Toys`;
+
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -44,11 +46,12 @@ const MyToys = () => {
     });
   };
   return (
-    <div className="max-w-7xl mx-auto my-14">
-      {" "}
+    // <div className="bg-sky-100 mx-20 p-4 rounded-md shadow-slate-700">
+    <div className="max-w-6xl mx-auto my-14">
       <div className="overflow-x-auto md:col-span-3 col-span-4 ">
-        <table className="table w-full table-normal ">
+        <table className="table w-full border-2 border-sky-800 ">
           {/* head */}
+
           <thead>
             <tr>
               <th>Product</th>
@@ -56,10 +59,14 @@ const MyToys = () => {
               <th>Toy Name</th>
               <th> Sub-category</th>
               <th>Price</th>
-              <th>Available Quantity</th>
+              <th>
+                Available <br />
+                Quantity
+              </th>
               <th>Rating</th>
-              <th>Description</th>
+              <th>Seller Details</th>
               <th></th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -84,33 +91,39 @@ const MyToys = () => {
                 <td>$ {t.Price}</td>
                 <td className="text-center"> {t.AvailableQuantity}</td>
                 <td>{t.Rating}</td>
-                <div className="border-t-2 border-slate-100">
+                {/* <div className="border-t-2 border-slate-100 bg-white">
                   <div className=" w-1/2"> {t.Description}</div>
-                </div>
-                {/* <td className=" w-1/2 mt-2">
-                  <p>{t.Description}</p>
-                </td> */}
+                </div> */}
+
+                <td>
+                  {t.sellerName} <br /> {t.sellerEmail}
+                </td>
                 <th className="text-center">
                   <Link
                     to={`/update/${t._id}`}
-                    className="btn btn-circle btn-primary btn-sm mx-2 bg-blue-500 border-none"
+                    className="btn bg-transparent btn-sm mx-2 border-none"
                   >
-                    up
+                    {" "}
+                    <FaEdit className="text-blue-500 text-2xl"></FaEdit>
                   </Link>
 
                   <button
                     className="btn btn-circle btn-sm btn-error bg-red-500  border-none text-white"
                     onClick={() => handleDelete(t._id)}
                   >
-                    X
+                    <FaTrash className="text-xl" />
                   </button>
                 </th>
+                <td className=" w-1/2 mt-2">
+                  <p>{t.Description}</p>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
+    // </div>
   );
 };
 

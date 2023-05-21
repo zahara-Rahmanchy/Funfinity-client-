@@ -6,6 +6,7 @@ import "react-tabs/style/react-tabs.css";
 import AboutUs from "./AboutUs";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import {Link} from "react-router-dom";
 // import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
 {
@@ -13,11 +14,15 @@ import Marquee from "react-fast-marquee";
 }
 
 const Home = () => {
+  useEffect(() => {
+    document.title = `Funfinity`;
+
+    Aos.init({duration: 2000});
+  }, []);
   const [cat, setcat] = useState([]);
   const [currentCat, setCurrentCat] = useState("Architecture Puzzles");
   const [toys, setToys] = useState([]);
   useEffect(() => {
-    Aos.init();
     fetch(`https://funfinity-toys-server.vercel.app/toys`)
       .then(res => res.json())
       .then(data => setcat(data));
@@ -37,11 +42,15 @@ const Home = () => {
 
   return (
     <div className="">
-      <Slider data-aos="fade-right" />
+      <div data-aos="fade-right">
+        <Slider />
+      </div>
       <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Our Gallery
       </h1>
-      <Gallery data-aos="fade-up" />
+      <div data-aos="fade-up">
+        <Gallery />
+      </div>
 
       {/* tabs */}
       <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
@@ -68,10 +77,14 @@ const Home = () => {
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{t.Name}</h2>
-
-                <p>{t.Rating}</p>
+                <div>
+                  <p>Price: $ {t.Price}</p>
+                  <p>Rating: {t.Rating} stars</p>
+                </div>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <Link to={`/toy/${t._id}`}>
+                    <button className="btn btn-primary">View Details</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -81,7 +94,7 @@ const Home = () => {
       {/* first extra section */}
       <div
         className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5"
-        data-aos="fade-zoom-in"
+        data-aos="zoom-in"
       >
         <Marquee speed={400} pauseOnHover={true}>
           <p className="text-3xl font-bold px-3 text-blue-500">
@@ -117,7 +130,9 @@ const Home = () => {
         </Marquee>
       </div>
       {/* second extra section */}
-      <AboutUs data-aos="flip-left" />
+      <div data-aos="zoom-in">
+        <AboutUs />
+      </div>
     </div>
   );
 };

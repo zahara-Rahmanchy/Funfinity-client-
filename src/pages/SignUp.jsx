@@ -2,6 +2,9 @@ import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../providers/AuthProvider";
 const SignUp = () => {
+  useEffect(() => {
+    document.title = `Funfinity|Sign Up`;
+  }, []);
   const {createUser, update, logOut} = useContext(AuthContext);
   const [error, setError] = useState();
   const navigate = useNavigate();

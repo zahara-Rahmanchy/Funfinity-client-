@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateToy = () => {
   const {id} = useParams();
   const [initial, setInitial] = useState([]);
 
   useEffect(() => {
+    document.title = `Funfinity|Update Toy`;
+
     fetch(`https://funfinity-toys-server.vercel.app/toy/${id}`)
       .then(res => res.json())
       .then(data => setInitial(data));
@@ -37,7 +40,7 @@ const UpdateToy = () => {
       .then(data => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          alert("updated");
+          Swal.fire("Updated Successfully");
         }
       });
   };

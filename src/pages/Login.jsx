@@ -1,10 +1,14 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useNavigate, useLocation} from "react-router-dom";
 import {AuthContext} from "../providers/AuthProvider";
 import {FcGoogle} from "react-icons/fc";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 const Login = () => {
+  useEffect(() => {
+    document.title = `Funfinity|Login`;
+  }, []);
   const {logIn, googleLogIn} = useContext(AuthContext);
   const [error, setError] = useState();
   // this from is present then true
@@ -12,12 +16,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log("login loc", location);
-  // if (location.state?.from?.pathname) {
-  //   setPath(true);
-  //   toast("You have to log in first to view details");
-  // }
-  // toast("You have to log in first to view details");
   const fromCurrentLocation = location.state?.from?.pathname || "/";
   const handleLogin = e => {
     setError("");
@@ -30,7 +28,7 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         // console.log(user);
-        alert("logged in");
+        Swal.fire("logged In Successfully");
         form.reset();
 
         navigate(fromCurrentLocation, {replace: true});

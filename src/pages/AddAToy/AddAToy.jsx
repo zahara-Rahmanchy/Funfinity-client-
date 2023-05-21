@@ -4,7 +4,9 @@ import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const AddAToy = () => {
   const {user} = useContext(AuthContext);
-
+  useEffect(() => {
+    document.title = `Funfinity| Add Toy`;
+  }, []);
   const handleAddToy = event => {
     event.preventDefault();
     const form = event.target;

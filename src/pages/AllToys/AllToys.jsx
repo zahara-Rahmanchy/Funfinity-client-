@@ -1,15 +1,18 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Link, Navigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 import {AuthContext} from "../../providers/AuthProvider";
 
 const AllToys = () => {
   const {user} = useContext(AuthContext);
+  const [state, setState] = useState(false);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("ascen");
   useEffect(() => {
+    document.title = "Funfinity | All Toys";
     fetch(
       `https://funfinity-toys-server.vercel.app/toys?value=Price&type=${type}`
     )
@@ -18,7 +21,13 @@ const AllToys = () => {
         setData(data);
       });
   }, [type]);
-
+  const navigate = useNavigate();
+  const handledetails = id => {
+    if (!user) {
+      Swal.fire("You need login to view details");
+    }
+    navigate(`/toy/${id}`);
+  };
   return (
     <div className="grid grid-cols-4 gap-5 mt-5 mx-16 ">
       <div className="w-full md:col-span-1 col-span-4">
@@ -72,7 +81,7 @@ const AllToys = () => {
         </ul>
       </div>
       <div className="overflow-x-auto md:col-span-3 col-span-4 ">
-        <table className="table w-full">
+        <table className="table w-full border-2 border-blue-100">
           {/* head */}
           <thead>
             <tr>
@@ -105,25 +114,12 @@ const AllToys = () => {
                   <td className="text-center"> {t.AvailableQuantity}</td>
 
                   <th className="text-center">
-                    {user ? (
-                      <Link to={`/toy/${t._id}`}>
-                        <button
-                          className="btn btn-primary btn-xs"
-                          //   onClick={() => handleDetails()}
-                        >
-                          Details
-                        </button>
-                      </Link>
-                    ) : (
-                      <Link to={`/toy/${t._id}`}>
-                        <button
-                          className="btn btn-primary btn-xs"
-                          //   onClick={() => handleDetails(toast(hej))}
-                        >
-                          Details
-                        </button>
-                      </Link>
-                    )}
+                    <button
+                      className="btn btn-primary btn-xs"
+                      onClick={() => handledetails(t._id)}
+                    >
+                      Details
+                    </button>
                   </th>
                 </tr>
               ))}
