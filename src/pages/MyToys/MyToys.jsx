@@ -35,9 +35,9 @@ const MyToys = () => {
           .then(res => res.json())
           .then(dat => {
             // console.log(dat);
-            const remaining = [];
+            // const remaining = [];
             if (dat.deletedCount > 0) {
-              remaining = data.filter(d => d._id !== id);
+              const remaining = data.filter(d => d._id !== id);
               setData(remaining);
             }
           });
