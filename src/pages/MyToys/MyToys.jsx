@@ -1,6 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import {AuthContext} from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import UpdateToy from "./UpdateToy";
 const MyToys = () => {
   const {user} = useContext(AuthContext);
 
@@ -10,7 +12,7 @@ const MyToys = () => {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setData(data);
       });
   }, [url, data]);
@@ -39,7 +41,6 @@ const MyToys = () => {
           });
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
-      // Swal.fire("Deleted!", "Your file has been deleted.", "success");
     });
   };
   return (
@@ -71,9 +72,13 @@ const MyToys = () => {
                 <td className="text-center"> {t.AvailableQuantity}</td>
 
                 <th className="text-center">
-                  <button className="btn btn-circle btn-sm mx-2 bg-blue-500 border-none">
+                  <Link
+                    to={`/update/${t._id}`}
+                    className="btn btn-circle btn-sm mx-2 bg-blue-500 border-none"
+                  >
                     up
-                  </button>
+                  </Link>
+
                   <button
                     className="btn btn-circle btn-sm  bg-red-500  border-none"
                     onClick={() => handleDelete(t._id)}

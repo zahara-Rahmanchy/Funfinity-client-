@@ -14,6 +14,7 @@ import ToyDetails from "./pages/AllToys/ToyDetails.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import Blog from "./pages/Blog.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import UpdateToy from "./pages/MyToys/UpdateToy.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,15 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateToy />
+          </PrivateRoute>
+        ),
+        // loader: {params},
       },
     ],
   },
