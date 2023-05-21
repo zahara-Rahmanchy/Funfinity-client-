@@ -2,18 +2,20 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div
-      className="hero min-h-screen max-w-5xl mx-auto bg-black bg-opacity-50"
+      className="hero min-h-screen max-w-7xl md:mx-auto bg-black bg-opacity-50"
       style={{
-        backgroundImage: `url("https://img.freepik.com/premium-vector/friends-playing-soccer-table-game-people-players-during-foosball-toy-football-characters-fun-leisure-activity-entertainment-colored-flat-vector-illustration-isolated-white-background_633472-1216.jpg?w=740")`,
+        backgroundImage: `url("https://img.freepik.com/free-vector/people-playing-ludo-game_23-2148701148.jpg?w=740&t=st=1684669188~exp=1684669788~hmac=a8143a9118c2b974420b25911299391d401c18e89ec7094277606ee0308a3340")`,
       }}
     >
       <div className=" bg-opacity-40 hero-overlay "></div>
 
       <div className="hero-content text-center text-neutral-content">
-        <h1 className="mb-5 text-7xl font-bold italic">ABOUT US</h1>
-        <div className="max-w-md">
-          {/* <h1 className="mb-5 text-7xl font-bold italic">ABOUT US</h1> */}
-          <p className="mb-5 font-bold text-lg bg-black bg-opacity-50 p-6 rounded-lg">
+        {/* <h1 className="mb-5 text-7xl font-bold italic">ABOUT US</h1> */}
+        <div className="max-w-3xl">
+          <h1 className="mb-5 md:text-7xl text-4xl font-bold italic">
+            ABOUT US
+          </h1>
+          <p className="mb-5 font-bold text-lg  bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500  p-6 rounded-lg md:mt-20 text-black">
             Welcome to our Board and Puzzle Game Paradise! Discover a
             captivating collection of mind-bending challenges and strategic
             gameplay. Explore a diverse selection of board games and puzzles for
