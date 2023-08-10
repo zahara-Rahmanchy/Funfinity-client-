@@ -64,10 +64,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/blog",
-        element: <Blog />,
-      },
+      // {
+      //   path: "/blog",
+      //   element: <Blog />,
+      // },
       {
         path: "/update/:id",
         element: (
@@ -84,7 +84,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       {" "}
-      <RouterProvider router={router} />
+      <div className="bg-blue-50">
+        <RouterProvider router={router} />
+      </div>
     </AuthProvider>
   </React.StrictMode>
 );

@@ -11,6 +11,9 @@ import {useNavigate} from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import Swal from "sweetalert2";
 import {AuthContext} from "../../providers/AuthProvider";
+import ShopCategory from "./ShopCategory";
+import SaleProducts from "./SaleProducts";
+import {Ship} from "./Ship";
 
 const Home = () => {
   const {user} = useContext(AuthContext);
@@ -47,66 +50,40 @@ const Home = () => {
     }
     navigate(`/toy/${id}`);
   };
+
+  const gradientStyle = {
+    background: "linear-gradient(to right, #9363B5, #9363B5)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    color: "transparent",
+    height: " 100px",
+    // Adjust font weight as needed
+  };
   return (
     <div className="">
       <div data-aos="fade-right">
         <Slider />
       </div>
-      <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
-        Our Gallery
+      <Ship />
+      <h1 className=" h-full text-rose-400 text-center text-6xl font-bold italic mt-36 md:mt-16">
+        Trending Products
       </h1>
-      <div data-aos="fade-up">
+      <div data-aos="zoom-in">
         <Gallery />
       </div>
 
       {/* tabs */}
-      <h1 className=" text-slate-800 text-center text-5xl font-bold italic mt-36 md:mt-16">
+      <h1 className=" text-blue-500 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Shop By Catagory
       </h1>
 
-      <div className="my-20 max-w-5xl mx-auto" data-aos="fade-flip">
-        <div className="tabs tabs-boxed bg-sky-300 mb-4 text-black md:grid md:grid-cols-4  md:space-x-4 justify-between md:space-y-2  md:p-4 space-y-4 mx-auto">
-          {uniqueCat.map((c, index) => (
-            <button
-              className="tab text-white font-semibold hover:tab-active btn border-s-0 border-b-0 border-t-0  btn-error w-full"
-              onClick={() => handleTab(c)}
-              key={index}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-        <div className="card bg-purple-100 grid md:grid-cols-3 md:space-x-8 space-y-4 justify-center p-3 grid-cols-1">
-          {toys.map(t => (
-            <div className="card  bg-base-100 shadow-xl" key={t._id}>
-              <figure>
-                <img src={t.picture} className="md:w-52 mt-2 rounded-md" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{t.Name}</h2>
-                <div>
-                  <p>Price: $ {t.Price}</p>
-                  <p>Rating: {t.Rating} stars</p>
-                </div>
-                <div className="card-actions justify-end">
-                  <button
-                    className="btn btn-primary btn-xs"
-                    onClick={() => handledetails(t._id)}
-                  >
-                    Details
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ShopCategory />
       {/* first extra section */}
       <div
-        className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5"
+        className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5 h-[150px] flex justify-center"
         data-aos="zoom-in"
       >
-        <Marquee speed={400} pauseOnHover={true}>
+        <Marquee speed={100} pauseOnHover={true}>
           <p className="text-3xl font-bold px-3 text-blue-500">
             Unbeatable prices on board games and puzzles - starting from just
             $9.99!
@@ -139,6 +116,10 @@ const Home = () => {
           </p>
         </Marquee>
       </div>
+      <h1 className=" text-rose-400 text-center text-5xl font-bold italic mt-36 md:mt-16">
+        Products On Sale!
+      </h1>
+      <SaleProducts />
       {/* second extra section */}
       <div data-aos="zoom-in">
         <AboutUs />

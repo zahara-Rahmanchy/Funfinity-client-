@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar fixed bg-white  z-10">
       <div className="navbar-start ">
         <div className="dropdown">
           <button
@@ -82,11 +82,11 @@ const Navbar = () => {
                   </li>
                 </>
               )}
-              <li>
+              {/* <li>
                 <Link to="/blog" className=" text-lg">
                   Blog
                 </Link>
-              </li>
+              </li> */}
               <div className=" space-y-3 flex flex-col ms-4 mt-2">
                 {user ? (
                   <button
@@ -133,26 +133,26 @@ const Navbar = () => {
               All Toys
             </Link>
           </li>
-          {user && (
-            <>
-              {" "}
-              <li>
-                <Link to="/mytoys" className=" text-lg">
-                  My Toys
-                </Link>
-              </li>
-              <li>
-                <Link to="/addtoys" className=" text-lg">
-                  Add Toy
-                </Link>
-              </li>
-            </>
-          )}
-          <li>
+          {/* {user && ( */}
+          <>
+            {" "}
+            <li>
+              <Link to="/mytoys" className=" text-lg">
+                My Toys
+              </Link>
+            </li>
+            <li>
+              <Link to="/addtoys" className=" text-lg">
+                Add Toy
+              </Link>
+            </li>
+          </>
+          {/* )} */}
+          {/* <li>
             <Link to="/blog" className=" text-lg">
               Blog
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="md:navbar-end space-x-4 hidden md:flex">

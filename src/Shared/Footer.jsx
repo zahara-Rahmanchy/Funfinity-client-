@@ -38,7 +38,7 @@ const Footer = () => {
           <a className="link link-hover">Email: funfinityGames@gmail.com</a>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t-  bg-purple-500 text-base-content border-base-300">
+      <footer className="footer px-10 py-4 border-t-  bg-gradient-to-r from-[#7d4d9f] via-base-600  to-[#744a91] text-base-content border-base-300">
         <div className="items-center grid-flow-col text-white">
           <p>
             <p className=" font-serif italic text-3xl align-top font-bold pt-0 mt-0  text-transparent bg-clip-text bg-gradient-to-r  from-sky-100 via-white to-sky-200 ">

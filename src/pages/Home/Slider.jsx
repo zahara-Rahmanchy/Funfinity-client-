@@ -3,12 +3,13 @@ import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
+import "./Slider.css";
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Slider = () => {
   return (
-    <div className="grid md:grid-cols-6 mt-50 place-content-center place-items-center md:gap-0 gap-9 bg-gradient-to-r from-sky-300  via-sky-200 to-sky-300 h-[400px]">
+    <div className="curly-border grid md:grid-cols-6 mt-50 place-content-center place-items-center md:gap-0 gap-9 bg-gradient-to-r from-[#95B3E0]  via-sky-300 to-[#95B3E0] h-[500px]">
       <div className="md:col-span-3 flex flex-col space-y-3 px-4 grid-cols-6 max-w-lg">
-        <h1 className=" text-3xl font-extrabold text-slate-600  text-left ms-0 pt-3 md:mt-0 mt-32">
+        <h1 className=" text-3xl font-extrabold text-slate-600  text-left ms-0 pt-3 md:mt-0 mt-48 ">
           Where Strategy Meets Play, <br /> Funfinity Lights <br></br>the Way
         </h1>
         <p className=" text-black text-left p-2">
@@ -19,7 +20,7 @@ const Slider = () => {
           Show Now
         </button>
       </div>
-      <div className="md:col-span-3 w-1/2 place-self-center">
+      <div className="md:col-span-3 w-3/4 place-self-center">
         <AutoplaySlider
           play={true}
           cancelOnInteraction={false} // should stop playing on user interaction

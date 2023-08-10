@@ -29,7 +29,7 @@ const AllToys = () => {
     navigate(`/toy/${id}`);
   };
   return (
-    <div className="grid grid-cols-4 gap-5 mt-5 mx-16 ">
+    <div className="grid grid-cols-4 gap-5 mt-5  mx-16 ">
       <div className="w-full md:col-span-1 col-span-4">
         <div className="form-control ">
           <div className="input-group">
@@ -80,7 +80,7 @@ const AllToys = () => {
           </button>
         </ul>
       </div>
-      <div className="overflow-x-auto md:col-span-3 col-span-4 ">
+      <div className="overflow-x-auto md:col-span-3 col-span-4 pt-20">
         <table className="table w-full border-2 border-blue-100">
           {/* head */}
           <thead>
