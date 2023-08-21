@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed bg-white  z-10">
+    <div className="navbar sticky top-[0.5px] bg-white border-b-cyan-500 border-b-2 z-20">
       <div className="navbar-start ">
         <div className="dropdown">
           <button

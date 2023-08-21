@@ -14,6 +14,8 @@ import {AuthContext} from "../../providers/AuthProvider";
 import ShopCategory from "./ShopCategory";
 import SaleProducts from "./SaleProducts";
 import {Ship} from "./Ship";
+import NewProduct from "./NewProduct";
+import UseSection from "./UseSection";
 
 const Home = () => {
   const {user} = useContext(AuthContext);
@@ -65,15 +67,19 @@ const Home = () => {
         <Slider />
       </div>
       <Ship />
-      <h1 className=" h-full text-rose-400 text-center text-6xl font-bold italic mt-36 md:mt-16">
+      <h1 className=" h-full text-[#7887D3] text-center text-6xl font-bold italic mt-36 md:mt-16">
         Trending Products
       </h1>
       <div data-aos="zoom-in">
         <Gallery />
       </div>
-
+      <UseSection />
+      <h1 className=" h-full text-[#7887D3] text-center text-5xl font-bold italic mt-36 md:mt-16 mb-10">
+        New Toys
+      </h1>
+      <NewProduct />
       {/* tabs */}
-      <h1 className=" text-blue-500 text-center text-5xl font-bold italic mt-36 md:mt-16">
+      <h1 className=" text-[#A78CEA] text-center text-5xl font-bold italic mt-36 md:mt-16">
         Shop By Catagory
       </h1>
 
@@ -116,14 +122,14 @@ const Home = () => {
           </p>
         </Marquee>
       </div>
+      <div data-aos="zoom-in">
+        <AboutUs />
+      </div>
       <h1 className=" text-rose-400 text-center text-5xl font-bold italic mt-36 md:mt-16">
         Products On Sale!
       </h1>
       <SaleProducts />
       {/* second extra section */}
-      <div data-aos="zoom-in">
-        <AboutUs />
-      </div>
     </div>
   );
 };

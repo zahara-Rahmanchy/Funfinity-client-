@@ -1,0 +1,44 @@
+.wave {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(157% + 1.3px);
+  height: 192px;
+}
+
+.wave.shape-fill {
+  fill: #7887d3;
+}
+.wave path.shape-fill-rev {
+  fill: #d8b4fe;
+}
+.wave path.shape-fill {
+  fill: #646ebd; /* Change to your desired color */
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .wave svg {
+    width: calc(139% + 1.3px);
+    height: 161px;
+  }
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wave svg {
+    width: calc(139% + 1.3px);
+    height: 161px;
+  }
+}
+
+/* top */

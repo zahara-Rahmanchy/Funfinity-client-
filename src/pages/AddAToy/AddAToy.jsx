@@ -52,10 +52,10 @@ const AddAToy = () => {
       });
   };
   return (
-    <div className="max-w-6xl mx-auto bg-blue-200 shadow-xl rounded ">
+    <div className="max-w-6xl mx-auto bg-blue-200 shadow-xl rounded z-30 mb-20">
       <ToastContainer />
-      <div className="grid grid-cols-3 place-content-center">
-        <div className="md:col-span-1 bg-purple-500">
+      <div className="grid grid-cols-3 place-content-center mt-24">
+        <div className="md:col-span-1 bg-purple-500 mt-30">
           <h1 className="text-4xl font-bold italic text-center my-10 text-white">
             Add A Toy
           </h1>

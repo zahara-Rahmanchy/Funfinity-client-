@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
+import Swal from "sweetalert2";
 
 const ShopCategory = () => {
   const [cat, setCat] = useState([]);
   const [toys, setToys] = useState([]);
   const [currentCat, setCurrentCat] = useState("Architecture Puzzles");
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://funfinity-toys-server.vercel.app/toys")
       .then(res => res.json())
@@ -22,7 +24,12 @@ const ShopCategory = () => {
       .then(data => setToys(data))
       .catch(error => console.error(error));
   };
-
+  const handledetails = id => {
+    // if (!user) {
+    //   Swal.fire("You need login to view details");
+    // }
+    navigate(`/toy/${id}`);
+  };
   return (
     <div className="my-20 max-w-7xl mx-auto">
       <Tabs>
@@ -42,7 +49,7 @@ const ShopCategory = () => {
         <div className="max-w-7xl mx-auto bg-rose-200">
           {uniqueCat.map((c, index) => (
             <TabPanel key={index} className="bg-purple-200">
-              <div className="grid md:grid-cols-3 p-3 grid-cols-1 gap-6 bg-rose-200 ">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 p-3 grid-cols-1 gap-6 bg-rose-200 ">
                 {toys.map(t => (
                   <div
                     className="card card-compact  bg-base-200 shadow-lg shadow-blue-400 p-4 h-[400px] m-3"

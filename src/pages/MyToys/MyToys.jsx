@@ -47,9 +47,9 @@ const MyToys = () => {
   };
   return (
     // <div className="bg-sky-100 mx-20 p-4 rounded-md shadow-slate-700">
-    <div className="max-w-6xl mx-auto my-14">
-      <div className="overflow-x-auto md:col-span-3 col-span-4 ">
-        <table className="table w-full border-2 border-sky-800 ">
+    <div className="max-w-6xl mx-auto">
+      <div className="overflow-x-auto md:col-span-3 col-span-4">
+        <table className="table w-full border-2 border-sky-800 mt-20">
           {/* head */}
 
           <thead>

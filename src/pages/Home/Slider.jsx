@@ -4,48 +4,37 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "./Slider.css";
+import {Player} from "@lottiefiles/react-lottie-player";
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Slider = () => {
   return (
-    <div className="curly-border grid md:grid-cols-6 mt-50 place-content-center place-items-center md:gap-0 gap-9 bg-gradient-to-r from-[#95B3E0]  via-sky-300 to-[#95B3E0] h-[500px]">
-      <div className="md:col-span-3 flex flex-col space-y-3 px-4 grid-cols-6 max-w-lg">
-        <h1 className=" text-3xl font-extrabold text-slate-600  text-left ms-0 pt-3 md:mt-0 mt-48 ">
-          Where Strategy Meets Play, <br /> Funfinity Lights <br></br>the Way
-        </h1>
-        <p className=" text-black text-left p-2">
-          Immerse yourself in a world of endless entertainment, where board
-          games and puzzles ignite your imagination
-        </p>
-        <button className="md:w-2/6 bg-gradient-to-r from-[#9363B5] via-base-600  to-[#9363B5] text-white  px-5 py-3 font-bold text-center rounded-3xl">
-          Show Now
-        </button>
+    <>
+      <div
+        className="spacer  grid grid-cols-6 mt-50 p place-content-center place-items-center md:gap-0  bg-gradient-to-r from-[#9feef4]   to-[#dcabed] h-[600px]  overflow-hidden"
+        style={{backgroundImage: `url(${"/head.svg"})`}}
+      >
+        <div className="md:col-span-3 flex flex-col space-y-3 px-4 col-span-5 max-w-lg order-1 md:order-1 ">
+          <h1 className=" text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r  from-blue-900 via-blue-900 to-[#823EA8] text-purple-50  text-left ms-0 pt-3 mt-0">
+            Where Strategy Meets Play, <br /> Funfinity Lights <br></br>the Way
+          </h1>
+          <p className=" text-white text-left p-2">
+            Immerse yourself in a world of endless entertainment, where board
+            games and puzzles ignite your imagination
+          </p>
+          <button className="md:w-2/6 bg-gradient-to-r from-[#9363B5] via-base-600  to-[#9363B5] text-white  px-5 py-3 font-bold text-center rounded-3xl">
+            Show Now
+          </button>
+        </div>
+        <div className="md:col-span-3 md:w-3/4 w-full md:place-self-center place-items-start md:order-2 order-2  md:mt-0 mt-10">
+          <Player
+            src="/banner2.json"
+            className="player  md:w-[400px] md:h-[400px] w-[100px] align-top "
+            loop
+            autoplay
+          />
+        </div>
       </div>
-      <div className="md:col-span-3 w-3/4 place-self-center">
-        <AutoplaySlider
-          play={true}
-          cancelOnInteraction={false} // should stop playing on user interaction
-          interval={600}
-          animation="cubeAnimation"
-          organicArrows={false}
-          bullets={false}
-          startup={false}
-        >
-          <div className="w-full rounded-md">
-            <img
-              src="https://i.ibb.co/3sGVqP4/set-challenging-board-games-23-2148705740-removebg-preview.png"
-              className="bg-[#83D6E7]"
-            />
-          </div>
-          <div>
-            <img
-              src="https://i.ibb.co/fnqqD0s/business-background-design-1343-33.jpg"
-              className="bg-[#83D6E7] rounded-md"
-            />
-          </div>
-          <div data-src="https://i.ibb.co/yk4VK55/sudoku-concept-illustration-114360-8388.jpg" />
-        </AutoplaySlider>
-      </div>
-    </div>
+    </>
   );
 };
 

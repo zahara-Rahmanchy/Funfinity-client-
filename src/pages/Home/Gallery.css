@@ -1,0 +1,8 @@
+.center .slick-center .project {
+  transform: scale(1.6);
+  z-index: 100;
+  transition: all 400ms ease-in-out;
+
+  margin: 10px;
+  padding: 10px;
+}

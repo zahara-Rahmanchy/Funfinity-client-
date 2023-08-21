@@ -84,7 +84,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       {" "}
-      <div className="bg-blue-50">
+      <div className="bg-base-50">
         <RouterProvider router={router} />
       </div>
     </AuthProvider>

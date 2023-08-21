@@ -4,7 +4,7 @@ import {FaFacebook, FaPinterest, FaTwitterSquare} from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-sky-300  bottom-0 mt-96">
+      <footer className="footer p-10 bg-[#D8B4FE] bottom-0">
         <div className="form-control w-80">
           <span className=" text-white font-bold text-xl">
             {" "}

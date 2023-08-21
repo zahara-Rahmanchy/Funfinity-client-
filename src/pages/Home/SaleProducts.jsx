@@ -14,8 +14,9 @@ const SaleProducts = () => {
   }, []);
   return (
     <div
-      className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-purple-300 p-5 flex justify-center"
-      //   data-aos="zoom-in"
+      className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-purple-300 p-5 flex justify-center h-[550px]"
+      style={{backgroundImage: `url(${"/blob.svg"})`}}
+      // data-aos="zoom-in"
     >
       <Marquee speed={100} pauseOnHover={true}>
         {saleData.map(msg => (
