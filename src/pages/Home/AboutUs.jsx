@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./Slider.css";
 import "./NewProduct.css";
+import "../../App.css";
 const AboutUs = () => {
   const [saleData, setSaleData] = useState([]);
 
@@ -15,10 +16,16 @@ const AboutUs = () => {
 
   return (
     <>
-      <h1 className="my-20 md:text-4xl text-4xl font-bold italic text-center text-[#7887d3]">
+      <h1
+        className="my-20 md:text-4xl text-4xl font-bold italic text-center text-[#7887d3]"
+        id="title"
+      >
         Most Active and Trusted Sellers!
       </h1>
-      <div className="hero max-h-screen max-w-8xl md:mx-auto bg-[#D8B4FE]  bg-opacity-100 spacer">
+      <div
+        className="hero max-h-screen max-w-8xl md:mx-auto bg-[#D8B4FE]  bg-opacity-100 spacer"
+        id="body-text"
+      >
         <div className="hero-content text-center text-neutral-content">
           {/* <h1 className="mb-5 text-7xl font-bold italic">ABOUT US</h1> */}
           <div className="max-w-3xl">

@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import {AuthContext} from "../../providers/AuthProvider";
 import "../Home/Slider.css";
+import {FaCartArrowDown} from "react-icons/fa";
 
 const AllToys = () => {
   const {user} = useContext(AuthContext);
@@ -24,9 +25,9 @@ const AllToys = () => {
   }, [type]);
 
   const handledetails = id => {
-    if (!user) {
-      Swal.fire("You need login to view details");
-    }
+    // if (!user) {
+    //   Swal.fire("You need login to view details");
+    // }
     navigate(`/toy/${id}`);
   };
   return (
@@ -90,20 +91,7 @@ const AllToys = () => {
             </button>
           </ul>
         </div>
-        <div className="overflow-x-auto md:col-span-4 col-span-4 pt-20  grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 m-5 ">
-          {/* <table className="table w-full border-2 border-blue-100">
-           
-            <thead>
-              <tr>
-                <th>Seller</th>
-                <th>Toy Name</th>
-                <th> Sub-category</th>
-                <th>Price</th>
-                <th>Available Quantity</th>
-                <th>View Details button</th>
-              </tr>
-            </thead>
-            <tbody> */}
+        <div className="overflow-x-auto md:col-span-4 col-span-4 pt-20  grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 m-5 ">
           {/* here filter is used so when matched with search field it will show those data otherwise will show all */}
           {data
             .filter(item => {
@@ -112,56 +100,44 @@ const AllToys = () => {
                 : item.Name.toLowerCase().includes(search.toLocaleLowerCase());
             })
             .map(t => (
-              // <tr key={t._id}>
-              //   <td>
-              //     <div className="font-bold">{t.sellerName}</div>
-              //   </td>
-              //   <td>{t.Name}</td>
-              //   <td>{t.subCategory}</td>
-              //   <td>$ {t.Price}</td>
-              //   <td className="text-center"> {t.AvailableQuantity}</td>
-
-              //   <th className="text-center">
-              //     <button
-              //       className="btn btn-primary btn-xs"
-              //       onClick={() => handledetails(t._id)}
-              //     >
-              //       Details
-              //     </button>
-              //   </th>
-              // </tr>
-
               <div
-                className="bg-stone-200 relative md:h-[300px] h-[250px] flex justify-center w-full rounded-lg mb-20 spacer"
+                className="bg-stone-200 min-h-[350px] h-auto  relative flex justify-center  w-full rounded-lg mb-20 spacer"
                 style={{backgroundImage: `url(${"./waves-toy.svg"})`}}
               >
-                <div className="absolute md:w-32 w-44 lg:w-44 -top-16 rounded-lg shadow-md shadow-slate-300 border-8 border-stone-100 card">
+                <div className="absolute w-44  -top-16 rounded-lg shadow-md shadow-slate-300 border-8 border-stone-100 card">
                   <img className="h-32" src={t.picture} />
                 </div>
                 <div className=" mt-24 text-rose-300 text-center bg-white bg-opacity-10 w-full">
                   <p className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r  from-[#1d1d75]  to-[#136480]">
                     {t.Name}
                   </p>
-                  <p className="font-medium text-md ">{t.subCategory}</p>
-                  <p className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r  from-[#f5319d]  to-[#f74a78]">
+                  <p className="font-medium text-lg text-indigo-500">
+                    {t.subCategory}
+                  </p>
+                  <p className="font-medium text-md text-transparent bg-clip-text bg-gradient-to-r  from-[#74056c]  to-[#f82093]">
+                    Seller: {t.sellerName}
+                  </p>
+                  <p className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r  from-[#eb35a2]  to-[#fc085d]">
                     $ {t.Price}
                   </p>
-                  {/* <p className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r  from-[#1d1d75]  to-[#136480]">
-                    {t.AvailableQuantity}
-                  </p> */}
-                  <div className="flex flex-wrap align-bottom justify-end s me-2">
+                  <div className="flex flex-wrap justify-between  w-3/4 mx-auto  items-end mt-20">
                     <button
                       className="btn  btn-xs btn-primary border-0 "
                       onClick={() => handledetails(t._id)}
                     >
                       Details
-                    </button>{" "}
+                    </button>
+
+                    <button
+                      className="btn  btn-xs btn-primary border-0 "
+                      onClick={() => handledetails(t._id)}
+                    >
+                      <FaCartArrowDown />
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
-          {/* </tbody>
-          </table> */}
         </div>
       </div>
     </section>

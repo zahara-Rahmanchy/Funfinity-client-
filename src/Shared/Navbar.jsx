@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import Swal from "sweetalert2";
 import {AuthContext} from "../providers/AuthProvider";
+import "../App.css";
 // bg-gradient-to-r from-[#9363B5] via-base-600  to-[#9363B5] text-white font-serif"
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
@@ -17,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar sticky top-[0.5px] bg-white border-b-cyan-500 border-b-2 z-20">
+    <div className="navbar sticky top-[0.5px] bg-white border-b-cyan-500 border-b-2 z-30">
       <div className="navbar-start ">
         <div className="dropdown">
           <button
@@ -44,6 +45,7 @@ const Navbar = () => {
             <ul
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              id="title"
             >
               {user && (
                 <div
@@ -116,13 +118,19 @@ const Navbar = () => {
           )}
         </div>
         <div className="flex items-center">
-          <p className=" font-serif italic text-2xl align-top font-bold pt-0 mt-0  text-transparent bg-clip-text bg-gradient-to-r  from-blue-800 via-base-600 to-cyan-500 ">
+          <p
+            id="title"
+            className=" font-serif italic text-3xl align-top font-bold pt-0 mt-0  text-transparent bg-clip-text bg-gradient-to-r  from-purple-800 via-rose-300 to-blue-400 "
+          >
             FUNFINITY
           </p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-normal menu-horizontal px-1 space-x-5 font-semibold hover: bg-transparent">
+        <ul
+          className="menu menu-normal menu-horizontal px-1 space-x-5 font-semibold hover: bg-transparent text-rose-400"
+          id="title"
+        >
           <li className="hover:bg-none  ">
             <Link to="/" className=" text-lg">
               Home
@@ -181,13 +189,13 @@ const Navbar = () => {
             {" "}
             <Link
               to="/login"
-              className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-5 py-1 text-white text-lg rounded-lg font-semibold hover:rounded-3xl"
+              className="bg-gradient-to-r  from-purple-700  to-blue-200 px-5 py-1 text-white text-md rounded-lg font-semibold hover:rounded-3xl"
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="bg-gradient-to-r  from-sky-300 via-base-600 to-sky-500 px-5 py-1 text-white text-lg rounded-lg font-semibold hover:rounded-3xl"
+              className="bg-gradient-to-r  from-purple-500  to-rose-300 px-5 py-1 text-white text-md rounded-lg font-semibold hover:rounded-3xl"
             >
               Sign Up
             </Link>

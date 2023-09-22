@@ -41,9 +41,9 @@ const router = createBrowserRouter([
       {
         path: "/toy/:id",
         element: (
-          <PrivateRoute>
-            <ToyDetails />
-          </PrivateRoute>
+          // <PrivateRoute>
+          <ToyDetails />
+          // </PrivateRoute>
         ),
         loader: ({params}) =>
           fetch(`https://funfinity-toys-server.vercel.app/toy/${params.id}`),

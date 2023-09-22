@@ -7,7 +7,6 @@ import AboutUs from "./AboutUs";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import {useNavigate} from "react-router-dom";
-// import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
 import Swal from "sweetalert2";
 import {AuthContext} from "../../providers/AuthProvider";
@@ -16,6 +15,8 @@ import SaleProducts from "./SaleProducts";
 import {Ship} from "./Ship";
 import NewProduct from "./NewProduct";
 import UseSection from "./UseSection";
+import SalesAdvert from "./SalesAdvert";
+import "../../App.css";
 
 const Home = () => {
   const {user} = useContext(AuthContext);
@@ -67,65 +68,47 @@ const Home = () => {
         <Slider />
       </div>
       <Ship />
-      <h1 className=" h-full text-[#7887D3] text-center text-6xl font-bold italic mt-36 md:mt-16">
+      <h1
+        className=" h-full text-purple-500 text-center text-6xl font-bold italic mt-36 md:mt-16"
+        id="title"
+        data-aos="zoom-in"
+      >
         Trending Products
       </h1>
       <div data-aos="zoom-in">
         <Gallery />
       </div>
-      <UseSection />
-      <h1 className=" h-full text-[#7887D3] text-center text-5xl font-bold italic mt-36 md:mt-16 mb-10">
+      <div data-aos="zoom-in">
+        <UseSection />{" "}
+      </div>
+      <h1
+        className=" h-full text-purple-500 text-center text-5xl font-bold italic mt-36 md:mt-16 mb-10"
+        id="title"
+        data-aos="zoom-in"
+      >
         New Toys
       </h1>
       <NewProduct />
       {/* tabs */}
-      <h1 className=" text-[#A78CEA] text-center text-5xl font-bold italic mt-36 md:mt-16">
+      <h1
+        className=" text-rose-500 text-center text-5xl font-bold italic mt-36 md:mt-16"
+        id="title"
+        data-aos="zoom-in"
+      >
         Shop By Catagory
       </h1>
 
       <ShopCategory />
-      {/* first extra section */}
-      <div
-        className="max-w-7xl mx-auto my-20 text-3xl font-bold bg-cyan-200 p-5 h-[150px] flex justify-center"
-        data-aos="zoom-in"
-      >
-        <Marquee speed={100} pauseOnHover={true}>
-          <p className="text-3xl font-bold px-3 text-blue-500">
-            Unbeatable prices on board games and puzzles - starting from just
-            $9.99!
-          </p>
-          <p className="text-red-400">
-            Special discounts and bundle offers available - save up to 50% on
-            select board games and puzzles!"
-          </p>
-          <p className="">
-            Buy one, get one free on all puzzle sets - limited time offer!"
-          </p>
-
-          <p>Enjoy free shipping on all orders over $25 - no code required!"</p>
-          <p className="text-blue-500">
-            Save 20% off your first purchase with our exclusive new customer
-            offer!"
-          </p>
-          <p>
-            Join our loyalty program and earn points on every purchase - redeem
-            for discounts and exclusive rewards!"
-          </p>
-
-          <p className="text-yellow-600">
-            Subscribe to our newsletter and receive a 10% discount code
-            instantly!"
-          </p>
-          <p className="text-pink-400">
-            Follow us on social media for daily deals and flash sales on board
-            games and puzzles!
-          </p>
-        </Marquee>
+      <div data-aos="zoom-in">
+        <SalesAdvert />
       </div>
       <div data-aos="zoom-in">
         <AboutUs />
       </div>
-      <h1 className=" text-rose-400 text-center text-5xl font-bold italic mt-36 md:mt-16">
+      <h1
+        className=" text-rose-400 text-center text-5xl font-bold italic mt-36 md:mt-16"
+        id="title"
+      >
         Products On Sale!
       </h1>
       <SaleProducts />

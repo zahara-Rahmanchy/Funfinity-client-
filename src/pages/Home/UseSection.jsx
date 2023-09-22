@@ -1,21 +1,30 @@
 import React from "react";
 import "./NewProduct.css";
+import "../../App.css";
 const UseSection = () => {
   return (
     <section className=" max-w-6xl mx-auto overflow-hidden">
-      <h1 className=" text-center text-5xl italic text-rose-500 font-semibold my-10">
+      <h1
+        className=" text-center text-5xl italic text-rose-500 font-semibold my-10"
+        id="title"
+      >
         Know About Us!
       </h1>
       <div
         className="bg-[#7887D3] lg:h-[300px] md:h-[500px] h-[700px] w-full"
+        id="body-text"
         style={{backgroundImage: `url(${"/blob.svg"})`}}
       >
         <div
+          id="body-text"
           className="grid lg:grid-cols-2 grid-cols-1 lg:place-items-center md:place-content-start place-items-center  w-full bg-[#7887D3]"
           style={{backgroundImage: `url(${"/blob.svg"})`}}
         >
-          <p className="mx-8 text-white text-lg z-10 md:mt-20 mt-15 pt-8">
-            "Welcome to our Toy Exchange Hub, a vibrant online marketplace where
+          <p
+            id="body-text"
+            className="mx-8 text-white text-lg z-10 md:mt-20 mt-15 pt-8"
+          >
+            Welcome to our Toy Exchange Hub, a vibrant online marketplace where
             toy enthusiasts and collectors come together to experience the joy
             of trading. Whether you're a dedicated seller looking to showcase
             your treasures or a curious buyer seeking that special toy, our
@@ -23,13 +32,19 @@ const UseSection = () => {
             array of toys from passionate sellers, negotiate fair deals, and
             indulge in hassle-free transactions. Join us to unlock a world of
             endless play possibilities – where connecting, buying, and selling
-            toys is a delightful adventure for everyone."
+            toys is a delightful adventure for everyone.
           </p>
           <div className="flex flex-col z-10 items-start md:mt-0 mt-6">
-            <h1 className="lg:text-center text-left md:text-left text-4xl italic text-transparent bg-clip-text bg-gradient-to-r  from-[#fabedf]  to-[#f3fcff] font-bold mt-0 pb-4">
+            <h1
+              id="body-text"
+              className="lg:text-center text-left md:text-left text-4xl italic text-transparent bg-clip-text bg-gradient-to-r  from-[#fabedf]  to-[#f3fcff] font-bold mt-0 pb-4"
+            >
               How does it Work?
             </h1>
-            <ul className="list list-disc text-xl font-semibold text-white  ms-8">
+            <ul
+              id="body-text"
+              className="list list-disc text-xl font-semibold text-white  ms-8"
+            >
               <li>Add Your Toy</li>
               <li>Join as User/Buyer</li>
               <li>Set The Price</li>
